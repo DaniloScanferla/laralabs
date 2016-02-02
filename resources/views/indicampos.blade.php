@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2> Register form </h2>
+		<h2> Indicampos </h2>
 
 		<div class="row col-lg-5">
 			<h2>Get Request</h2>
@@ -23,8 +23,8 @@
 			<form id="register" action="#">
 				<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
-				<label for="firstname"></label>
-				<input type="text" id="firstname" placeholder="Primeiro Nome:" class="form-control">
+				<label for="nome"></label>
+				<input type="text" id="nome" placeholder="Primeiro Nome:" class="form-control">
 
 				<label for="lastname"></label>
 				<input type="text" id="lastname" placeholder="Ultimo Nome:" class="form-control">
@@ -53,7 +53,7 @@
 			});
 
 			$('#register').submit(function(){
-				var fname = $('#firstname').val();
+				var fname = $('#nome').val();
 				var lname = $('#lastname').val();
 
 				//$.post('register', {firstname:fname, lastname:lname}, function(data){
@@ -61,13 +61,13 @@
 				//	$('#postRequestData').html(data);
 				//});
 
-				var dataString = "firstname="+fname+"&lastname="+lname;
+				var dataString = "nome="+fname;
 				$.ajax({
 					type: "POST",
-					url: "register",
+					url: "novoindicador",
 					data: dataString,
 					success: function(data){
-						console.log(data);
+						alert("Indicador inserido com sucesso");
 						//$('#postRequestData').html(data);
 					}
 				});
